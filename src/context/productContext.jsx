@@ -5,16 +5,14 @@ const productContext = createContext();
 
 export const ProductContextApi = ({ children }) => {
     const [products, setProducts] = useState([]);
-
-
     useEffect(() => {
         fetchData();
     }, [])
 
     async function fetchData() {
         try {
-            const data = await axios.get('https://api.escuelajs.co/api/v1/products');
-            setProducts(data.data);
+            const data = await axios.get('https://dummyjson.com/products?limit=100');
+            setProducts(data.data.products);
         }
         catch (err) {
             console.log(err);
